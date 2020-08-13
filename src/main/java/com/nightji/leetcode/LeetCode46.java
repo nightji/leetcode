@@ -28,6 +28,7 @@ public class LeetCode46 {
                     List<Integer> path, List<List<Integer>> res, boolean[] used) {
         if (length == depth) {
             res.add(new ArrayList<>(path));
+            return;
         }
         for(int i = 0; i < length; i++) {
             if (!used[i]) {
