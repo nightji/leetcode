@@ -7,7 +7,7 @@ import java.util.Arrays;
 public class LeetCode206 {
 
     public static void main(String[] args) {
-        ListNode<Integer> head = ListNode.init(Arrays.asList(1, 2, 3, 4, 5));
+        ListNode head = ListNode.init(Arrays.asList(1, 2, 3, 4, 5));
         ListNode.printNode(head);
         LeetCode206 leetCode206 = new LeetCode206();
         ListNode.printNode(leetCode206.reverseList2(head));

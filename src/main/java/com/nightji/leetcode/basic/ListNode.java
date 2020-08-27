@@ -4,26 +4,26 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class ListNode<T> {
+public class ListNode {
 
-    public T val;
+    public int val;
 
     public ListNode next;
 
-    ListNode(T x) {
+    public ListNode(int x) {
         val = x;
         next = null;
     }
 
-    ListNode() {
+    public ListNode() {
 
     }
 
 
-    public static ListNode init(List list) {
+    public static ListNode init(List<Integer> list) {
         ListNode head = new ListNode(), dummy = new ListNode();
         head.next = dummy;
-        for (Object e : list) {
+        for (Integer e : list) {
             dummy.next = new ListNode(e);
             dummy = dummy.next;
         }
@@ -44,7 +44,7 @@ public class ListNode<T> {
     }
 
     public static void main(String[] args) {
-        ListNode<Integer> listNode = ListNode.init(Arrays.asList(1, 2, 3));
+        ListNode listNode = ListNode.init(Arrays.asList(1, 2, 3));
         ListNode.printNode(listNode);
     }
 
