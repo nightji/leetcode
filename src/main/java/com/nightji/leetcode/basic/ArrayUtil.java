@@ -14,4 +14,11 @@ public class ArrayUtil {
                 .collect(Collectors.joining(", ")));
     }
 
+    public static void printArray(String[] array) {
+        if (array == null || array.length == 0) {
+            return;
+        }
+        System.out.println(String.join(", ", array));
+    }
+
 }
