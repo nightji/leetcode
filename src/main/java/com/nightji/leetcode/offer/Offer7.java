@@ -16,20 +16,20 @@ public class Offer7 {
         for (int i = 0; i < inorder.length; i++) {
             map.put(inorder[i], i);
         }
-        return buildTree(map, preorder, 0, preorder.length, inorder, 0, inorder.length);
+        return buildTree(map, preorder, 0, preorder.length - 1, inorder, 0, inorder.length - 1);
     }
 
     public TreeNode buildTree(Map<Integer, Integer> map, int[] preorder, int preLeft, int preRight,
                               int[] inorder, int inLeft, int inRight) {
-        if (preLeft == preRight) {
+        if (preLeft > preRight || inLeft > inRight) {
             return null;
         }
         int pivot = preorder[preLeft];
         TreeNode root = new TreeNode(pivot);
         int pivotIndex = map.get(pivot);
-        int leftTreeNum = pivotIndex - inLeft + 1;
-        root.left = buildTree(map, preorder, preLeft + 1, preLeft + leftTreeNum , inorder, inLeft, pivotIndex);
-        root.right = buildTree(map, preorder, preLeft + leftTreeNum, preRight, inorder, pivotIndex + 1, inRight);
+        int leftTreeNum = pivotIndex - inLeft;
+        root.left = buildTree(map, preorder, preLeft + 1, preLeft + leftTreeNum, inorder, inLeft, pivotIndex - 1);
+        root.right = buildTree(map, preorder, preLeft + leftTreeNum + 1, preRight, inorder, pivotIndex + 1, inRight);
         return root;
     }
 
