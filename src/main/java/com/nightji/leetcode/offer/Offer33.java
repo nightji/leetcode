@@ -4,7 +4,7 @@ public class Offer33 {
 
     public static void main(String[] args) {
         Offer33 offer33 = new Offer33();
-        int[] nums = {1, 6, 3, 2, 5};
+        int[] nums = {4, 8, 6, 12, 16, 14, 10};
         System.out.println(offer33.verifyPostorder(nums));
     }
 
@@ -27,7 +27,7 @@ public class Offer33 {
                 return false;
             }
         }
-        return helper(postorder, left, index - 1) && helper(postorder, index, right);
+        return helper(postorder, left, index - 1) && helper(postorder, index, right - 1);
 
     }
 
