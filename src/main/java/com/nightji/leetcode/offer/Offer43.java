@@ -1,40 +1,29 @@
 package com.nightji.leetcode.offer;
 
-import com.nightji.leetcode.basic.TreeNode;
-
-import java.util.ArrayList;
-import java.util.List;
-
 public class Offer43 {
 
     public static void main(String[] args) {
         Offer43 offer43 = new Offer43();
-
+        System.out.println(offer43.countDigitOne(13));
     }
 
-    public List<List<Integer>> pathSum(TreeNode root, int sum) {
-        List<Integer> path = new ArrayList<>();
-        List<List<Integer>> res = new ArrayList<>();
-        dfs(root, sum, path, res);
-        return res;
+    public int countDigitOne(int n) {
+        return f(n);
     }
 
-    public void dfs(TreeNode treeNode, int sum, List<Integer> path, List<List<Integer>> res) {
-        if (treeNode == null) {
-            return;
+    public int f(int n) {
+        if (n <= 0) {
+            return 0;
         }
-        path.add(treeNode.val);
-        if (treeNode.left == null && treeNode.right == null) {
-            if (treeNode.val == sum) {
-                res.add(new ArrayList<>(path));
-            }
+        String s = String.valueOf(n);
+        int high = s.charAt(0) - '0';
+        int pow = (int)Math.pow(10, s.length() - 1);
+        int last = n - high * pow;
+        if (high == 1) {
+            return f(pow - 1) + last + 1 + f(last);
+        } else {
+            return pow + high * f(pow - 1) + f(last);
         }
-        dfs(treeNode.left, sum - treeNode.val, path, res);
-        dfs(treeNode.right, sum - treeNode.val, path, res);
-        path.remove(path.size() - 1);
     }
-
-
-
 
 }

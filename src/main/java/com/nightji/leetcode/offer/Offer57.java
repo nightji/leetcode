@@ -2,39 +2,28 @@ package com.nightji.leetcode.offer;
 
 import com.nightji.leetcode.basic.ArrayUtil;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Offer57 {
 
     public static void main(String[] args) {
         Offer57 offer57 = new Offer57();
-        ArrayUtil.printArray(offer57.findContinuousSequence(9));
+        int[] nums = {10, 26, 30, 31, 47, 60};
+        ArrayUtil.printArray(offer57.twoSum(nums, 40));
     }
 
-    public int[][] findContinuousSequence(int target) {
-        int i = 1;
-        int j = 1;
-        int sum = 0;
-        List<int[]> res = new ArrayList<>();
-        while (i <= target / 2) {
+    public int[] twoSum(int[] nums, int target) {
+        int n = nums.length;
+        int i = 0, j = n - 1;
+        while (i < j) {
+            int sum = nums[i] + nums[j];
             if (sum < target) {
-                sum += j;
-                j++;
+                i++;
             } else if (sum > target) {
-                sum -= i;
-                i++;
+                j--;
             } else {
-                int[] array = new int[j - i];
-                for (int k = i; k < j; k++) {
-                    array[k-i] = k;
-                }
-                res.add(array);
-                sum -= i;
-                i++;
+                return new int[]{nums[i], nums[j]};
             }
         }
-        return res.toArray(new int[0][]);
+        return new int[2];
     }
 
 }
